@@ -6,7 +6,6 @@ const manifest = defineManifest({
   manifest_version: 3,
   name: "Honban Warning",
   description: "本番環境で警告を出す拡張",
-  default_locale: "ja",
   version: "0.0.1",
   permissions: ["storage", "tabs"],
   action: {
