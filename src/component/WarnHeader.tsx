@@ -20,9 +20,9 @@ function WarnHeader() {
   }, []);
 
   return (
-    isTargetUrl && (
+    isTargetUrl ? (
       <div className="warn-header">これは本番環境です！ご安全に！</div>
-    )
+    ) : <></>
   );
 }
 export default WarnHeader;
