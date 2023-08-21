@@ -6,16 +6,14 @@ function App() {
   const [inputValue, setInputValue] = useState<string>("");
 
   const deleteUrl = (index: number) => {
-    setTermList((prev) => prev.filter((_, i) => i !== index));
+    setTermList((prev) => prev?.filter((_, i) => i !== index) ?? []);
   };
 
   // コンポーネント始動時にローカルストレージからURLリストを取得
   useEffect(() => {
-    chrome.storage.local
-      .get(["termList"])
-      .then(({ termList }: { termList: string }) => {
-        setTermList(termList ?? []);
-      });
+    chrome.storage.local.get(["termList"]).then((res) => {
+      setTermList(res.termList ?? []);
+    });
   }, []);
 
   // URLリストが変更されたらローカルストレージに保存
@@ -49,7 +47,7 @@ function App() {
         onChange={(e) => setInputValue(e.target.value)}
         onKeyUp={(e) => {
           if (e.key === "Enter") {
-            setTermList((prev) => uniq([...prev, inputValue]));
+            setTermList((prev) => uniq([...(prev ?? []), inputValue]));
             setInputValue("");
           }
         }}
