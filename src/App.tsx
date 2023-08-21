@@ -23,8 +23,10 @@ function App() {
   }, [termList]);
 
   return (
-    <div>
-      <p>🚨本番環境一覧(部分一致)🚨</p>
+    <div style={{ width: "300px" }}>
+      <p style={{ backgroundColor: "black", color: "white" }}>
+        🚨本番環境URL一覧(部分一致)🚨
+      </p>
       {termList && (
         <ul>
           {termList.map((url, index) => (
@@ -38,7 +40,7 @@ function App() {
         </ul>
       )}
 
-      <label htmlFor="url">対象URL</label>
+      <label htmlFor="url">対象文字列:</label>
       <input
         name="url"
         value={inputValue}
@@ -51,6 +53,7 @@ function App() {
             setInputValue("");
           }
         }}
+        style={{ marginLeft: "10px" }}
       />
     </div>
   );
