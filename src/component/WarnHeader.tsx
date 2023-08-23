@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import "./WarnHeader.css";
 
 function WarnHeader() {
   const [termList, setTermList] = useState<string[]>([]); // 警告を表示する条件のリスト
@@ -47,7 +48,24 @@ function WarnHeader() {
   }, []);
 
   return isTargetUrl ? (
-    <div className="warn-header">これは本番環境です！ご安全に！</div>
+    <div
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "20px",
+        backgroundColor: "#F44336",
+        zIndex: 999,
+        color: "white",
+        textAlign: "center",
+        lineHeight: "20px",
+        fontSize: "13px",
+        fontWeight: "bold",
+      }}
+    >
+      これは本番環境です！ご安全に！
+    </div>
   ) : (
     <></>
   );

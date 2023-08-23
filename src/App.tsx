@@ -27,18 +27,39 @@ function App() {
       <p style={{ backgroundColor: "black", color: "white" }}>
         🚨本番環境URL一覧(部分一致)🚨
       </p>
-      {termList && (
-        <ul>
-          {termList.map((url, index) => (
-            <li key={url}>
-              {url}
-              <button type="button" onClick={() => deleteUrl(index)}>
-                x
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
+      <div>URL一覧</div>
+      <div
+        style={{
+          height: "100px",
+          border: "1px solid #000",
+          marginBottom: "8px",
+          overflowY: "scroll",
+          overflowX: "hidden",
+        }}
+      >
+        {termList && (
+          <ul style={{ listStyle: "none", margin: "0", padding: "0" }}>
+            {termList.map((url, index) => (
+              <li
+                key={url}
+                style={{
+                  padding: "8px 8px",
+                  borderBottom: "1px solid #AAA",
+                }}
+              >
+                {url}
+                <button
+                  type="button"
+                  style={{ float: "right" }}
+                  onClick={() => deleteUrl(index)}
+                >
+                  ×
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
 
       <label htmlFor="url">対象文字列:</label>
       <input
